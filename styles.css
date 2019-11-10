@@ -88,19 +88,23 @@ form:after{
     display: block;
 }
 
-button{
-    border: 0;
-    background: #fff;
-    border-radius: 10px;
-    padding: 13px;
-    width: 14%;
-    box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
-    font-weight: bold;
-    font-family: ubuntu;
-    letter-spacing: 1px;
-    color: #999;
-}
+ .btn {
+    border: none; /* Remove borders */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 30px;
+} 
 
+.btn:hover {
+    background-color: grey;
+  }
+
+#addClothesButton { 
+    position: absolute; 
+    right: 35; 
+    bottom: 35;
+}
 
 /* The Modal (background) */
 .modal {
@@ -138,4 +142,35 @@ button{
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #3D155F;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: #F0A07C;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #F0A07C;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
   }
