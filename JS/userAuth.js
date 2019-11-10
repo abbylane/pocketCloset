@@ -7,7 +7,11 @@ and bring them to home page if so*/
 firebase.auth().onAuthStateChanged(function(user){
   if(user){
     // User is signed in
-    window.location.href = "index.html";
+
+    // TODO: will need to fix this later
+    setTimeout(function(){ window.location.href = "index.html"; }, 500);
+
+    //window.location.href = "index.html";
     console.log('success');
   }
   else{
@@ -35,7 +39,6 @@ if(loginForm){
   });
 }
 
-
 /* Signup user with email, password, and name */
 if(signupForm){
   signupForm.addEventListener('submit', (e) => {
@@ -56,3 +59,4 @@ if(signupForm){
     });
   });
 }
+
