@@ -2,8 +2,7 @@
 const loginForm = document.querySelector('#login-form');
 const signupForm = document.querySelector('#signup-form');
 
-/*Check if user is logged in 
-and bring them to home page if so*/
+/*Check if user is logged in and bring them to home page if so*/
 firebase.auth().onAuthStateChanged(function(user){
   if(user){
     // User is signed in
