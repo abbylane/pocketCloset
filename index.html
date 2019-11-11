@@ -2,108 +2,52 @@
 
 <head>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>-->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-    <div class="sidenav">
-        <center>
-            <h2>PocketCloset</h2>
-        </center>
-        <a href="#shorts">Shorts</a>
-        <a href="#pants">Pants</a>
-        <a href="#shoes">Shoes</a>
-        <a href="#accessories">Accessories</a>
-        <a href="#outfits">Outfits</a>
-        <!-- Popup form for add clothes -->
-        <button class="btn" id="addClothesButton"><i class="fa fa-plus fa-lg"></i></button>
+    <div class="row" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+        <div class="column menu">
+            <center>
+                <h2>PocketCloset</h2>
+            </center>
+            <a href="#shorts">Shorts</a>
+            <a href="#pants">Pants</a>
+            <a href="#shoes">Shoes</a>
+            <a href="#accessories">Accessories</a>
+            <a href="#outfits">Outfits</a>
+            <a id="logout-link">Logout</a>
 
-        <!--Add clothes form-->
-        <div id="addClothesModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4>Add Clothes</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
+            <!-- Add clothes button and popup menu -->
+            <button id="addClothesButton">Add Clothes</button>
 
-                                <form>
-                                    Type
-                                    <select name="clothingType">
-                                        <option value="tshirt">T-shirt</option>
-                                        <option value="longsleeve">Long Sleeve</option>
-                                        <option value="sweatshirt">Sweatshirt</option>
-                                        <option value="jeans">Jeans</option>
-                                        <option value="tennisShoes">Tennis Shoes</option>
-                                        <option value="heels">Heels</option>
-                                        <option value="dress">Dress</option>
-                                    </select> <br><br>
-
-                                    Color
-                                    <select name="clothingColor">
-                                        <option value="blue">Blue</option>
-                                        <option value="white">White</option>
-                                        <option value="black">Black</option>
-                                        <option value="gray">Gray</option>
-                                        <option value="red">Red</option>
-                                    </select> <br><br>
-
-                                    Notes
-                                    <input type="text" name="notes" placeholder="Notes">
-                                    <br><br>
-                                    <input type="submit">
-                                </form>
-                            </div>
-                            <div class="col-md-6">
-                                IMAGE
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyC0ItS3ABU0-LUgXZTWdasmFuiwJwOqtl8",
-                authDomain: "pocket-closet-8bf0b.firebaseapp.com",
-                databaseURL: "https://pocket-closet-8bf0b.firebaseio.com",
-                projectId: "pocket-closet-8bf0b",
-                storageBucket: "pocket-closet-8bf0b.appspot.com",
-                messagingSenderId: "962491262116",
-                appId: "1:962491262116:web:d272407f38031acc9f3231",
-                measurementId: "G-KEV6ZH4NH4"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            const db = firebase.firestore();
-            db.settings({ timestampsInSnapshots: true });
-        </script>
-        <script src="app.js"></script>
+
+        <div class="column myCloset">
+            <h1>Pocket Closet</h1>
+        </div>
+        <div class="column currentOutfit">
+            <center>
+                <h2>Current Outfit</h2>
+            </center>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-search-pseudo-elements></script>
+    <script src="JS/firebase.js"></script>
+
+    <!-- My Scripts -->
+    <script src="app.js"></script>
+    <script src="JS/logout.js"></script>
 </body>
 
 </html>

@@ -27,25 +27,25 @@ db.collection('users').get().then(snapshot => {
 
 
 // ----- Add Clothes Modal and Button -------
-var addClothesmodal = document.getElementById("addClothesModal");
-var addClothesButton = document.getElementById("addClothesButton");
+// var addClothesmodal = document.getElementById("addClothesModal");
+// var addClothesButton = document.getElementById("addClothesButton");
 
-var span = document.getElementsByClassName("close")[0];
+// var span = document.getElementsByClassName("close")[0];
 
-// when the user clicks on the button, open the modal
-addClothesButton.onclick = function() {
-  addClothesmodal.style.display = "block";
-}
+// // when the user clicks on the button, open the modal
+// addClothesButton.onclick = function() {
+//   addClothesmodal.style.display = "block";
+// }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  addClothesmodal.style.display = "none";
-}
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+//   addClothesmodal.style.display = "none";
+// }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == addClothesmodal) {
-    addClothesmodal.style.display = "none";
-  }
-}
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == addClothesmodal) {
+//     addClothesmodal.style.display = "none";
+//   }
+// }
 
