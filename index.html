@@ -1,6 +1,7 @@
 <html>
     <head>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,24 +10,21 @@
     <body>
 
 
+        <div class="row" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+            <div class="column menu">
+                <center><h2>PocketCloset</h2></center>
+                <a href="#shorts">Shorts</a>
+                <a href="#pants">Pants</a>
+                <a href="#shoes">Shoes</a>
+                <a href="#accessories">Accessories</a>
+                <a href="#outfits">Outfits</a>
+            </div>
 
-        <div class="sidenav">
-            <center><h2>PocketCloset</h2></center>
-            <a href="#shorts">Shorts</a>
-            <a href="#pants">Pants</a>
-            <a href="#shoes">Shoes</a>
-            <a href="#accessories">Accessories</a>
-            <a href="#outfits">Outfits</a>
-        </div>
-
-        <div class="main">
-            <h1>Pocket Closet</h1>
-            <div class="content">
-
-                <form id="add-clothes-form"></form>
-
-                <ul id="clothing-list"></ul>
-
+            <div class="column myCloset">
+                <h1>Pocket Closet</h1>
+            </div>
+            <div class="column currentOutfit">
+                    <center><h2>Current Outfit</h2></center>
             </div>
         </div>
         
