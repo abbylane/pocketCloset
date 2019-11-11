@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pocket Closet - Signup</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+
+    <!-- Stylesheets -->
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <h1>Sign up</h1>
+
+    <!-- Signup Form -->
+    <div id="signup-box">
+      <form id="signup-form">
+        <div class="input-row">
+          <input type="name" id="signup-name" placeholder="Name" required>
+          <i class="material-icons">person_outline</i>
+        </div>
+        <div class="input-row">
+          <input type="email" id="signup-email" placeholder="Email address" required>
+          <i class="material-icons">email</i>
+        </div>
+        <div class="input-row">
+          <input type="password" id="signup-password" placeholder="Password" required>
+          <i class="material-icons">lock_outline</i>
+        </div>
+        <input class="submit" type="submit" value="SIGN UP" id="signup-button">
+      </form>
+    </div>
+
+    <a href="login.html">Back to login</a>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script src="JS/firebase.js"></script>
+
+    <!-- My Scripts -->
+    <script src="JS/userAuth.js"></script>
+
+  </body>
+</html>
