@@ -18,7 +18,9 @@
                 <a href="#shoes">Shoes</a>
                 <a href="#accessories">Accessories</a>
                 <a href="#outfits">Outfits</a>
+                <a id="logout-link">Logout</a>
             </div>
+
 
             <div class="column myCloset">
                 <h1>Pocket Closet</h1>
@@ -28,23 +30,12 @@
             </div>
         </div>
         
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyC0ItS3ABU0-LUgXZTWdasmFuiwJwOqtl8",
-                authDomain: "pocket-closet-8bf0b.firebaseapp.com",
-                databaseURL: "https://pocket-closet-8bf0b.firebaseio.com",
-                projectId: "pocket-closet-8bf0b",
-                storageBucket: "pocket-closet-8bf0b.appspot.com",
-                messagingSenderId: "962491262116",
-                appId: "1:962491262116:web:d272407f38031acc9f3231",
-                measurementId: "G-KEV6ZH4NH4"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            const db = firebase.firestore();
-            db.settings({timestampsInSnapshots: true});
-        </script>
+        <!-- Firebase Scripts-->
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+        <script src="JS/firebase.js"></script>
+
+        <!-- My Scripts -->
         <script src="app.js"></script>
+        <script src="JS/logout.js"></script>
     </body>
 </html>
