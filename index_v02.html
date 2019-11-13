@@ -3,7 +3,7 @@
 <head>
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="CSS/bootstrap.min.css">    
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
 
     
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">PocketCloset</a>
+        <a class="navbar-brand" href="#">POCKETCLOSET</a>
         <!-- TODO: add account page -->
         <a class="navbar-brand" href="#"> 
             <i class="far fa-user-circle"></i>
@@ -33,20 +33,31 @@
 
     <div class="container">
         <div class="row">
+            <div class="col">
+                <center><h2>Clothing Items</h2></center>
+            </div>
+            <div class="col-6">
+                    <center><h1>My Closet</h1></center>
+            </div>
+            <div class="col">
+                    <center><h2>Outfits</h2></center>
+            </div>           
+        </div>
+        <br>
+
+        <div class="row">
             <!-- COLUMN 1 -->
             <div class="col">
-                <center>
-                    <h2>Clothing Items</h2>
-                </center>
-
                 <br>
                 <nav class="nav flex-column">
-                    <a class="nav-link active" href="#shorts">Shorts</a>
-                    <a class="nav-link active" href="#pants">Pants</a>
-                    <a class="nav-link active" href="#shoes">Shoes</a>
-                    <a class="nav-link active" href="#accessories">Accessories</a>
-                    <a class="nav-link active" href="#outfits">Outfits</a>
-                    <a class="nav-link active" href="#" id="logout-link">Logout</a>
+                    <div class="btn-group-vertical" data-toggle="buttons">
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location.href = '#pants'">Pants</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location.href = '#shorts'">Shorts</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location.href = '#shoes'">Shoes</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location.href = '#accessories'">Accessories</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location.href = '#outfits'">Outfits</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" id="logout-link" onclick="window.location.href = '#logout'">Logout</button>  
+                    </div>
                 </nav>
 
                 <!-- Add clothes button and popup menu -->
@@ -111,17 +122,29 @@
 
             <!-- COLUMN 2 -->
             <div class="col-6">
-                <center>
-                    <h1>My Closet</h1>
-                </center>
+
+                <div class="card-columns">
+                        <div class="card border-warning mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Black Pants</div>
+                                <div class="card-body">
+                                 <img class="card-img" src="images/blackPants.png" alt="Card image">
+                                </div>
+                        </div>
+
+                        <div class="card border-warning mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Blue Shirt</div>
+                                <div class="card-body">
+                                 <img class="card-img" src="images/blueTshirt.png" alt="Card image">
+                                </div>
+                        </div>
+
+                    </div>
             </div>
 
 
             <!-- COLUMN 3 -->
             <div class="col">
-                <center>
-                    <h2>Current Outfit</h2>
-                </center>
+                <!-- TODO  -->
             </div>
         </div>
 
