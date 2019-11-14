@@ -22,7 +22,9 @@
 <body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">POCKETCLOSET</a>
+        <a class="navbar-brand" href="#">
+            <h4>POCKETCLOSET</h4>
+        </a>
         <!-- TODO: add account page -->
         <a class="navbar-brand" href="#">
             <li class="dropdown">
@@ -101,57 +103,39 @@
     </nav>
     <br><br>
 
-    <!-- Page Headers -->
-    <div class="container" max-width="95%">
-        <div class="row">
-            <div class="col-2 mr-2">
-                <center>
-                    <h3>Clothing Items</h3>
-                </center>
-            </div>
-            <div class="col-6 ml-2 mr-2">
-                <center>
-                    <h2>My Closet</h2>
-                </center>
-            </div>
-            <div class="col ml-2 mr-2">
-                <center>
-                    <h3>Outfits</h3>
-                </center>
-            </div>
-        </div>
-        <br>
-
+    <div class="container mb-10">
         <div class="row">
             <!-- COLUMN 1 -->
-            <div class="col-2 mr-2">
+            <div class="col-1.5 mr-5">
+                <div class="border-bottom border-success " align="left">
+                    <h5>Clothing Items</h5>
+                </div>
                 <br>
                 <nav class="nav flex-column">
-                    <div class="btn-group-vertical" data-toggle="buttons">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
-                            onclick="window.location.href = '#pants'">Pants</button>
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
-                            onclick="window.location.href = '#shorts'">Shorts</button>
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
-                            onclick="window.location.href = '#shoes'">Shoes</button>
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
-                            onclick="window.location.href = '#accessories'">Accessories</button>
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
-                            onclick="window.location.href = '#outfits'">Outfits</button>
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" id="logout-link"
-                            onclick="window.location.href = '#logout'">Logout</button>
-                    </div>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
+                        onclick="window.location.href = '#pants'">Pants</button>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
+                        onclick="window.location.href = '#shorts'">Shorts</button>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
+                        onclick="window.location.href = '#shoes'">Shoes</button>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
+                        onclick="window.location.href = '#accessories'">Accessories</button>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
+                        onclick="window.location.href = '#outfits'">Outfits</button>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block" id="logout-link"
+                        onclick="window.location.href = '#logout'">Logout</button>
                 </nav>
 
                 <!-- Add clothes button and popup menu -->
                 <!-- Button trigger modal -->
                 <br><br>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClothesModal">
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+                    data-target="#addClothesModal">
                     Add Clothes
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="addClothesModal" tabindex="-1" role="dialog"
+                <div class="modal fade " id="addClothesModal" tabindex="-1" role="dialog"
                     aria-labelledby="addClothesModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -196,7 +180,17 @@
                                 </form>
                                 <!-- TODO: temporary - change functionality so image changes -->
                                 TEMPORARY
-                                <img class="rounded-sm" src="images/blueTshirt.png">
+                                <div class="p-3" align="center" id="addClothesImage">
+                                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                                        <div class="card-header">
+                                            Blue tShirt
+                                        </div>
+                                        <div class="card-body">
+                                            <img class="card-img" src="images/blueTshirt.png" alt="Card image">
+                                        </div>
+                                    </div>
+                                </div>
+
 
                             </div>
                             <div class="modal-footer">
@@ -210,9 +204,12 @@
             </div>
 
             <!-- COLUMN 2 -->
-            <div class="col-6 ml-2 mr-2 rounded bg-white border">
-
-                <div class="card-columns mr-2 ml-2 mt-4 mb-2">
+            <div class="col-6 ml-2 mr-5 rounded bg-white border overflow-auto">
+                <div class="p-3 border-bottom border-success" align="center">
+                    <h3>My Closet</h3>
+                </div>
+                <br>
+                <div class="card-columns mr-2 ml-2 mb-2">
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                         <div class="card-header">
                             Black Pants
@@ -267,28 +264,74 @@
 
 
             <!-- COLUMN 3 -->
-            <div class="col ml-2 mr-2 rounded bg-white border h-30 p-5">
+            <div class="col ml-2 mr-2 rounded bg-white border">
+                <div class="p-3 border-bottom border-success" align="center">
+                    <h4>Outfits</h4>
+                </div>
                 <!-- TODO  -->
+                <br>
+                <div class="col p-6">
+                    <div class="card border-secondary p-5 mb-4">
+                        <div class="card-body">
+                            <img class="card-img" src="images/blueTshirt.png" alt="Card image">
+                        </div>
+                    </div>
+                    <div class="card border-secondary p-5 mb-4">
+                        <div class="card-body">
+                            <img class="card-img" src="images/blackPants.png" alt="Card image">
+                        </div>
+                    </div>
+                    <div class="card border-secondary p-5 mb-4">
+                        <div class="card-body">
+                            <img class="card-img" src="images/blackShoes.jpeg" alt="Card image">
+                        </div>
+                    </div>
 
-                <div class="card border-secondary p-3">
-                    <div class="card-body">
-                        <img class="card-img" src="images/blueTshirt.png" alt="Card image">
-                    </div>
-                </div>
-                <div class="card border-secondary p-3">
-                    <div class="card-body">
-                        <img class="card-img" src="images/blackPants.png" alt="Card image">
-                    </div>
-                </div>
-                <div class="card border-secondary p-3">
-                    <div class="card-body">
-                        <img class="card-img" src="images/blackShoes.jpeg" alt="Card image">
+                    <div class="card border-secondary p-5 mb-4">
+                        <div class="card-body">
+                            <img class="card-img" src="images/#" alt="Card image">
+                        </div>
                     </div>
                 </div>
 
-                <div class="card border-secondary p-3">
-                    <div class="card-body">
-                        <img class="card-img" src="images/#" alt="Card image">
+                <!-- Save Outfit Button and Modal -->
+                <div id="addOutfitButton">
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+                        data-target="#addOutfitModal">
+                        Save Outfit
+                    </button>
+                </div>
+                <div class="modal fade " id="addOutfitModal" tabindex="-1" role="dialog"
+                    aria-labelledby="addOutfitModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addOutfitModalLabel">Add Outfit</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+
+                                    <div class="form-group">
+                                        <label for="inputOutfitName">Outfit Name</label>
+                                        <input type="outfitName" class="form-control" id="inputOutfitName"
+                                            placeholder="eg. Gameday Outfit">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="notes">Notes</label>
+                                        <textarea class="form-control" id="notes" rows="3"></textarea>
+                                    </div>
+                                    <br>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
