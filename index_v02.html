@@ -19,8 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
-
+<body class="bg-light">
 
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">POCKETCLOSET</a>
@@ -102,21 +101,22 @@
     </nav>
     <br><br>
 
-    <div class="container">
+    <!-- Page Headers -->
+    <div class="container" max-width="95%">
         <div class="row">
-            <div class="col pl-2 pr-2">
+            <div class="col-2 mr-2">
                 <center>
-                    <h2>Clothing Items</h2>
+                    <h3>Clothing Items</h3>
                 </center>
             </div>
-            <div class="col-6 pl-2 pr-2">
+            <div class="col-6 ml-2 mr-2">
                 <center>
-                    <h1>My Closet</h1>
+                    <h2>My Closet</h2>
                 </center>
             </div>
-            <div class="col pl-2 pr-2">
+            <div class="col ml-2 mr-2">
                 <center>
-                    <h2>Outfits</h2>
+                    <h3>Outfits</h3>
                 </center>
             </div>
         </div>
@@ -124,7 +124,7 @@
 
         <div class="row">
             <!-- COLUMN 1 -->
-            <div class="col pl-2 pr-2">
+            <div class="col-2 mr-2">
                 <br>
                 <nav class="nav flex-column">
                     <div class="btn-group-vertical" data-toggle="buttons">
@@ -178,14 +178,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <label for="clothingColor">Clothing Color</label>
-                                            <select class="form-control" id="colorSelect">
-                                                    <option value="blue">Blue</option>
-                                                    <option value="white">White</option>
-                                                    <option value="black">Black</option>
-                                                    <option value="gray">Gray</option>
-                                                    <option value="red">Red</option>
-                                            </select>
+                                        <label for="clothingColor">Clothing Color</label>
+                                        <select class="form-control" id="colorSelect">
+                                            <option value="blue">Blue</option>
+                                            <option value="white">White</option>
+                                            <option value="black">Black</option>
+                                            <option value="gray">Gray</option>
+                                            <option value="red">Red</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -210,13 +210,18 @@
             </div>
 
             <!-- COLUMN 2 -->
-            <div class="col-6 pl-2 pr-2">
+            <div class="col-6 ml-2 mr-2 rounded bg-white border">
 
-                <div class="card-columns">
+                <div class="card-columns mr-2 ml-2 mt-4 mb-2">
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Black Pants</div>
+                        <div class="card-header">
+                            Black Pants
+                        </div>
                         <div class="card-body">
                             <img class="card-img" src="images/blackPants.png" alt="Card image">
+                        </div>
+                        <div align="right">
+                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
                         </div>
                     </div>
 
@@ -225,15 +230,67 @@
                         <div class="card-body">
                             <img class="card-img" src="images/blueTshirt.png" alt="Card image">
                         </div>
+                        <div align="right">
+                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
+                        </div>
                     </div>
 
+                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Temp Card</div>
+                        <div class="card-body">
+                            <img class="card-img" src="#" alt="Card image">
+                        </div>
+                        <div align="right">
+                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
+                        </div>
+                    </div>
+                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Temp Card</div>
+                        <div class="card-body">
+                            <img class="card-img" src="#" alt="Card image">
+                        </div>
+                        <div align="right">
+                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
+                        </div>
+                    </div>
+                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Temp Card</div>
+                        <div class="card-body">
+                            <img class="card-img" src="#" alt="Card image">
+                        </div>
+                        <div align="right">
+                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
             <!-- COLUMN 3 -->
-            <div class="col  ">
+            <div class="col ml-2 mr-2 rounded bg-white border h-30 p-5">
                 <!-- TODO  -->
+
+                <div class="card border-secondary p-3">
+                    <div class="card-body">
+                        <img class="card-img" src="images/blueTshirt.png" alt="Card image">
+                    </div>
+                </div>
+                <div class="card border-secondary p-3">
+                    <div class="card-body">
+                        <img class="card-img" src="images/blackPants.png" alt="Card image">
+                    </div>
+                </div>
+                <div class="card border-secondary p-3">
+                    <div class="card-body">
+                        <img class="card-img" src="images/blackShoes.jpeg" alt="Card image">
+                    </div>
+                </div>
+
+                <div class="card border-secondary p-3">
+                    <div class="card-body">
+                        <img class="card-img" src="images/#" alt="Card image">
+                    </div>
+                </div>
             </div>
         </div>
 
