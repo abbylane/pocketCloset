@@ -2,8 +2,8 @@
 
 <head>
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -21,15 +21,15 @@
 
 <body>
 
-    
+
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">PocketCloset</a>
+        <a class="navbar-brand" href="#">POCKETCLOSET</a>
         <!-- TODO: add account page -->
-        <a class="navbar-brand" href="#"> 
-                <li class="dropdown">
-                        <a data-toggle="dropdown" href="#"><i class="far fa-user-circle"></i>
-                        </a>
-            
+        <a class="navbar-brand" href="#">
+            <li class="dropdown">
+                <a data-toggle="dropdown" href="#"><i class="far fa-user-circle"></i>
+                </a>
+
         </a>
         <ul class="dropdown-menu">
             <li><a href="#" data-toggle="modal" data-target="#accountSettingsModal">Account</a></li>
@@ -39,83 +39,108 @@
         <!-- TODO: Make all Account settings functional -->
         <!-- Modal -->
         <div class="modal fade" id="accountSettingsModal" tabindex="-1" role="dialog"
-          aria-labelledby="accountSettingsModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="accountSettingsModalLabel">Account Settings</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                      <form>
-                          Change Email
-                          <input type="text" name="email" placeholder="Enter New Email Here">
-                          <br><br>
+            aria-labelledby="accountSettingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="accountSettingsModalLabel">Account Settings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            Change Email
+                            <input type="text" name="email" placeholder="Enter New Email Here">
+                            <br><br>
 
 
-                          Change Password
-                          <input type="text" name="email" placeholder="Enter New Password Here">
-                          <br><br>
+                            Change Password
+                            <input type="text" name="email" placeholder="Enter New Password Here">
+                            <br><br>
 
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteDialogue">
-                           Delete Account
-                          </button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#deleteDialogue">
+                                Delete Account
+                            </button>
 
-        
-                      </form>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-              </div>
-          </div>
-      </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="deleteDialogue" tabindex="-1" role="dialog"
-      aria-labelledby="deleteDialogueModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="deleteDialogueModalLabel">Delete Account?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                  Are you sure you would like to delete your account? All clothes and outfits in your closet will be loss!
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
-              </div>
-          </div>
-      </div>
-  </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  </div>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteDialogue" tabindex="-1" role="dialog"
+            aria-labelledby="deleteDialogueModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteDialogueModalLabel">Delete Account?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you would like to delete your account? All clothes and outfits in your closet will
+                        be loss!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
     </nav>
     <br><br>
 
     <div class="container">
         <div class="row">
-            <!-- COLUMN 1 -->
-            <div class="col">
+            <div class="col pl-2 pr-2">
                 <center>
                     <h2>Clothing Items</h2>
                 </center>
+            </div>
+            <div class="col-6 pl-2 pr-2">
+                <center>
+                    <h1>My Closet</h1>
+                </center>
+            </div>
+            <div class="col pl-2 pr-2">
+                <center>
+                    <h2>Outfits</h2>
+                </center>
+            </div>
+        </div>
+        <br>
 
+        <div class="row">
+            <!-- COLUMN 1 -->
+            <div class="col pl-2 pr-2">
                 <br>
                 <nav class="nav flex-column">
-                    <a class="nav-link active" href="#shorts">Shorts</a>
-                    <a class="nav-link active" href="#pants">Pants</a>
-                    <a class="nav-link active" href="#shoes">Shoes</a>
-                    <a class="nav-link active" href="#accessories">Accessories</a>
-                    <a class="nav-link active" href="#outfits">Outfits</a>
-                    <a class="nav-link active" href="#" id="logout-link">Logout</a>
+                    <div class="btn-group-vertical" data-toggle="buttons">
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
+                            onclick="window.location.href = '#pants'">Pants</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
+                            onclick="window.location.href = '#shorts'">Shorts</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
+                            onclick="window.location.href = '#shoes'">Shoes</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
+                            onclick="window.location.href = '#accessories'">Accessories</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block"
+                            onclick="window.location.href = '#outfits'">Outfits</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block" id="logout-link"
+                            onclick="window.location.href = '#logout'">Logout</button>
+                    </div>
                 </nav>
 
                 <!-- Add clothes button and popup menu -->
@@ -138,34 +163,40 @@
                             </div>
                             <div class="modal-body">
                                 <form>
-                                    Type
-                                    <select name="clothingType">
-                                        <option value="tshirt">T-shirt</option>
-                                        <option value="longsleeve">Long Sleeve</option>
-                                        <option value="sweatshirt">Sweatshirt</option>
-                                        <option value="jeans">Jeans</option>
-                                        <option value="tennisShoes">Tennis Shoes</option>
-                                        <option value="heels">Heels</option>
-                                        <option value="dress">Dress</option>
-                                    </select> <br><br>
 
-                                    Color
-                                    <select name="clothingColor">
-                                        <option value="blue">Blue</option>
-                                        <option value="white">White</option>
-                                        <option value="black">Black</option>
-                                        <option value="gray">Gray</option>
-                                        <option value="red">Red</option>
-                                    </select> <br><br>
+                                    <div class="form-group">
+                                        <label for="clothingType">Clothing Type</label>
+                                        <select class="form-control" id="typeSelect">
+                                            <option value="tshirt">T-shirt</option>
+                                            <option value="longsleeve">Long Sleeve</option>
+                                            <option value="sweatshirt">Sweatshirt</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="tennisShoes">Tennis Shoes</option>
+                                            <option value="heels">Heels</option>
+                                            <option value="dress">Dress</option>
+                                        </select>
+                                    </div>
 
-                                    Notes
-                                    <input type="text" name="notes" placeholder="Notes">
-                                    <br><br>
-                                    <input type="submit">
+                                    <div class="form-group">
+                                            <label for="clothingColor">Clothing Color</label>
+                                            <select class="form-control" id="colorSelect">
+                                                    <option value="blue">Blue</option>
+                                                    <option value="white">White</option>
+                                                    <option value="black">Black</option>
+                                                    <option value="gray">Gray</option>
+                                                    <option value="red">Red</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="notes">Notes</label>
+                                        <textarea class="form-control" id="notes" rows="3"></textarea>
+                                    </div>
+                                    <br>
                                 </form>
                                 <!-- TODO: temporary - change functionality so image changes -->
                                 TEMPORARY
-                                <img class="rounded-sm" src="images/blueTshirt.png" >
+                                <img class="rounded-sm" src="images/blueTshirt.png">
 
                             </div>
                             <div class="modal-footer">
@@ -179,18 +210,30 @@
             </div>
 
             <!-- COLUMN 2 -->
-            <div class="col-6">
-                <center>
-                    <h1>My Closet</h1>
-                </center>
+            <div class="col-6 pl-2 pr-2">
+
+                <div class="card-columns">
+                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Black Pants</div>
+                        <div class="card-body">
+                            <img class="card-img" src="images/blackPants.png" alt="Card image">
+                        </div>
+                    </div>
+
+                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Blue Shirt</div>
+                        <div class="card-body">
+                            <img class="card-img" src="images/blueTshirt.png" alt="Card image">
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
 
             <!-- COLUMN 3 -->
-            <div class="col">
-                <center>
-                    <h2>Current Outfit</h2>
-                </center>
+            <div class="col  ">
+                <!-- TODO  -->
             </div>
         </div>
 
