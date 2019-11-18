@@ -147,7 +147,6 @@
                             </div>
                             <div class="modal-body">
                                 <form>
-
                                     <div class="form-group">
                                         <label for="newOutfitName">
                                             <h6>Name</h6>
@@ -185,10 +184,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="notes">
-                                            <h6>Notes</h6>
-                                        </label>
-                                        <textarea class="form-control" id="notes" rows="3"></textarea>
+                                        <label for="notes">Notes</label>
+                                        <textarea class="form-control" id="notesTextArea" rows="3"></textarea>
                                     </div>
                                 </form>
                                 <!-- TODO: temporary - change functionality so image changes -->
@@ -213,7 +210,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-primary" id="addClothingItemBtn">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -499,6 +496,7 @@
 
     <!-- My Scripts -->
     <script src="app.js"></script>
+    <script src="JS/addClothes.js"></script>
     <script src="JS/logout.js"></script>
 </body>
 
