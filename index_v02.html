@@ -134,7 +134,7 @@
                     Add Clothes
                 </button>
 
-                <!-- Modal -->
+                <!-- Add clothes modal -->
                 <div class="modal fade " id="addClothesModal" tabindex="-1" role="dialog"
                     aria-labelledby="addClothesModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -149,7 +149,17 @@
                                 <form>
 
                                     <div class="form-group">
-                                        <label for="clothingType">Clothing Type</label>
+                                        <label for="newOutfitName">
+                                            <h6>Name</h6>
+                                        </label>
+                                        <input type="name" class="form-control" id="newClothingName"
+                                            placeholder="Item Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="clothingType">
+                                            <h6>Clothing Type</h6>
+                                        </label>
                                         <select class="form-control" id="typeSelect">
                                             <option value="tshirt">T-shirt</option>
                                             <option value="longsleeve">Long Sleeve</option>
@@ -162,7 +172,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="clothingColor">Clothing Color</label>
+                                        <label for="clothingColor">
+                                            <h6>Clothing Color</h6>
+                                        </label>
                                         <select class="form-control" id="colorSelect">
                                             <option value="blue">Blue</option>
                                             <option value="white">White</option>
@@ -173,14 +185,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="notes">Notes</label>
+                                        <label for="notes">
+                                            <h6>Notes</h6>
+                                        </label>
                                         <textarea class="form-control" id="notes" rows="3"></textarea>
                                     </div>
-                                    <br>
                                 </form>
                                 <!-- TODO: temporary - change functionality so image changes -->
-                                TEMPORARY
-                                <div class="p-3" align="center" id="addClothesImage">
+                                <!-- <div class="p-3" align="center" id="addClothesImage">
                                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                                         <div class="card-header">
                                             Blue tShirt
@@ -189,6 +201,12 @@
                                             <img class="card-img" src="images/blueTshirt.png" alt="Card image">
                                         </div>
                                     </div>
+                                </div> -->
+
+                                <h6>Upload Photo</h6>
+                                <div class="form-group">
+                                    <input type="file" class="form-control-file" id="addClothesUploadPhoto"
+                                        aria-describedby="fileHelp">
                                 </div>
 
 
@@ -217,8 +235,34 @@
                         <div class="card-body">
                             <img class="card-img" src="images/blackPants.png" alt="Card image">
                         </div>
-                        <div align="right">
-                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
+                        <div align="right" class="p-2">
+                            <div class="btn-group" role="group">
+                                <!-- Add to outfit  -->
+                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                    data-target="#addClothingModal">+</button>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop2" type="button"
+                                        class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"></button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2"
+                                        x-placement="bottom-start"
+                                        style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+                                        <!-- Edit clothing item -->
+                                        <button type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                                            data-target="#editClothingItemModal">
+                                            Edit
+                                        </button>
+
+                                        <!-- Delte Clothing Item  -->
+                                        <button type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                                            data-target="#deleteClothingModal">
+                                            Delete
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -227,9 +271,7 @@
                         <div class="card-body">
                             <img class="card-img" src="images/blueTshirt.png" alt="Card image">
                         </div>
-                        <div align="right">
-                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
-                        </div>
+
                     </div>
 
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
@@ -237,29 +279,140 @@
                         <div class="card-body">
                             <img class="card-img" src="#" alt="Card image">
                         </div>
-                        <div align="right">
-                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
-                        </div>
+
                     </div>
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                         <div class="card-header">Temp Card</div>
                         <div class="card-body">
                             <img class="card-img" src="#" alt="Card image">
                         </div>
-                        <div align="right">
-                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
-                        </div>
+
                     </div>
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                         <div class="card-header">Temp Card</div>
                         <div class="card-body">
                             <img class="card-img" src="#" alt="Card image">
                         </div>
-                        <div align="right">
-                            <button type="button" class="btn btn-outline-secondary btn-sml mr-2 ml-2 mb-2">+</button>
+
+                    </div>
+                </div>
+
+                <!-- Add clothing item to an outfit -->
+                <div class="modal fade " id="addClothingModal" tabindex="-1" role="dialog"
+                    aria-labelledby="addClothingModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addClothingModalLabel">Add to Outfit</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Add Item to Existing Outfit:</h6>
+                                <form>
+                                    <select class="form-control">
+                                        <option>Outfit 1</option>
+                                        <option>Outfit 2</option>
+                                        <option>Outfit 3</option>
+                                        <option>Outfit 4</option>
+                                    </select>
+                                </form>
+
+                                <br>OR<br><br>
+
+                                <div class="form-group">
+                                    <label for="newOutfitName">
+                                        <h6>Create New Outfit</h6>
+                                    </label>
+                                    <input type="outfit" class="form-control" id="newOutfitName"
+                                        placeholder="Outfit Name">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Done</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Edit current clothing item  -->
+                <div class="modal fade " id="editClothingItemModal" tabindex="-1" role="dialog"
+                    aria-labelledby="editClothingItemModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editClothingItemModalLabel">
+                                    <h6>Edit Clothing Item</h6>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+
+                                    <div class="form-group">
+                                        <label for="editItemName">
+                                            <h6>Name</h6>
+                                        </label>
+                                        <input type="name" class="form-control" id="editItemName"
+                                            placeholder="Edit Item Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="clothingType">
+                                            <h6>Clothing Type</h6>
+                                        </label>
+                                        <select class="form-control" id="typeSelect">
+                                            <option value="tshirt">T-shirt</option>
+                                            <option value="longsleeve">Long Sleeve</option>
+                                            <option value="sweatshirt">Sweatshirt</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="tennisShoes">Tennis Shoes</option>
+                                            <option value="heels">Heels</option>
+                                            <option value="dress">Dress</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="clothingColor">
+                                            <h6>Clothing Color</h6>
+                                        </label>
+                                        <select class="form-control" id="colorSelect">
+                                            <option value="blue">Blue</option>
+                                            <option value="white">White</option>
+                                            <option value="black">Black</option>
+                                            <option value="gray">Gray</option>
+                                            <option value="red">Red</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="notes">
+                                            <h6>Notes</h6>
+                                        </label>
+                                        <textarea class="form-control" id="notes" rows="3"></textarea>
+                                    </div>
+                                    <br>
+                                </form>
+
+                                <h6>Upload New Photo</h6>
+                                <div class="form-group">
+                                    <input type="file" class="form-control-file" id="editClothesNewPhoto"
+                                        aria-describedby="fileHelp">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
 
