@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(function(user){
     // User is signed in
 
     // TODO: will need to fix this later
-    setTimeout(function(){ window.location.href = "index.html"; }, 500);
+    setTimeout(function(){ window.location.href = "index_v02.html"; }, 500);
 
     //window.location.href = "index.html";
     console.log('success');
@@ -58,4 +58,5 @@ if(signupForm){
     });
   });
 }
+
 
