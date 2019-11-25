@@ -50,18 +50,20 @@ function showContent(type){
 
       }
 
-      if((doc.data().type=='longsleeve' || doc.data().type=='t-shirt' || doc.data().type=='sweatshirt' || doc.data().type=='dress') && type =='shirts'){
+      if((doc.data().type=='longsleeve' || doc.data().type=='tshirt' || doc.data().type=='sweatshirt' || doc.data().type=='dress') && type =='shirts'){
         var temp = document.getElementsByTagName("template")[0];
         var clon = temp.content.cloneNode(true);
-        clon.getElementById("pic").src = "images/blackPants.png";
+        clon.getElementById("clotheName").textContent = doc.data().name;
+        clon.getElementById("pic").src = "images/blueTShirt.png";
         document.getElementById("cardColumns").appendChild(clon);
       }
 
-      if((doc.data().type=='tennisshoes' || doc.data().type=='heels') && type =='shoes'){
+      if((doc.data().type=='tennisShoes' || doc.data().type=='heels') && type =='shoes'){
         var temp = document.getElementsByTagName("template")[0];
         var clon = temp.content.cloneNode(true);
-        document.getElementById("cardColumns").appendChild(clon);
+        clon.getElementById("clotheName").textContent = doc.data().name;
         clon.getElementById("pic").src = "images/blackShoes.jpeg";
+        document.getElementById("cardColumns").appendChild(clon);     
       }
     })
     
