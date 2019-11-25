@@ -117,13 +117,13 @@
                 <br>
                 <nav class="nav flex-column">
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="window.location.href = '#pants'">Pants</button>
+                        onclick="showContent('pants')">Pants</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="window.location.href = '#shorts'">Shorts</button>
+                        onclick="showContent('shirts')">Shirts</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="window.location.href = '#shoes'">Shoes</button>
+                        onclick="showContent('shoes')">Shoes</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="window.location.href = '#accessories'">Accessories</button>
+                        onclick="showContent('accessories')">Accessories</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
                         onclick="window.location.href = '#outfits'">Outfits</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block" id="logout-link"
@@ -224,7 +224,47 @@
             </div>
 
             <!-- COLUMN 2 -->
-            <div class="col-6 ml-2 mr-5 rounded bg-white border overflow-auto">
+
+            <template>
+                <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                    <div class="card-header" id="clotheName">
+                        Black Pants
+                    </div>
+                    <div class="card-body">
+                        <img id="pic" class="card-img" src="" alt="Card image">
+                    </div>
+                    <div align="right" class="p-2">
+                        <div class="btn-group" role="group">
+                            <!-- Add to outfit  -->
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                data-target="#addClothingModal">+</button>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop2" type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"></button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2"
+                                    x-placement="bottom-start"
+                                    style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+                                    <!-- Edit clothing item -->
+                                    <button type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                                        data-target="#editClothingItemModal">
+                                        Edit
+                                    </button>
+
+                                    <!-- Delte Clothing Item  -->
+                                    <button type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                                        data-target="#deleteClothingModal">
+                                        Delete
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </template>
+
+            <div class="col-6 ml-2 mr-5 rounded bg-white border overflow-auto" id="cardColumns">
                 <div class="p-3 border-bottom border-success" align="center">
                     <h3>My Closet</h3>
                 </div>
@@ -332,7 +372,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Done</button>
+                                <button type="button" class="btn btn-primary">Go</button>
                             </div>
                         </div>
                     </div>
