@@ -19,16 +19,36 @@ addClothingItemBtn.onclick = function(){
   }, { merge: true });
 }
 ;
-function showContent(){
+function showContent(type){
   var user = firebase.auth().currentUser;
   console.log(user);
   console.log(db.collection("closet"));
+  cards = document.getElementById("cardColumns");
+  while (cards.firstChild) {
+    cards.removeChild(cards.firstChild);
+  }
   db.collection('users').doc(user.uid).collection('closet').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
       console.log(doc.data());
-      var temp = document.getElementsByTagName("template")[0];
-      var clon = temp.content.cloneNode(true);
+      if(doc.data().type=='jeans' && type =='pants'){
+        var temp = document.getElementsByTagName("template")[0];
+        var clon = temp.content.cloneNode(true);
+        document.getElementById("cardColumns").appendChild(clon);
+      }
+
+      if((doc.data().type=='longsleeve' || doc.data().type=='t-shirt' || doc.data().type=='sweatshirt' || doc.data().type=='dress') && type =='shirts'){
+        var temp = document.getElementsByTagName("template")[0];
+        var clon = temp.content.cloneNode(true);
+        document.getElementById("cardColumns").appendChild(clon);
+      }
+
+      if((doc.data().type=='tennisshoes' || doc.data().type=='heels') && type =='shoes'){
+        var temp = document.getElementsByTagName("template")[0];
+        var clon = temp.content.cloneNode(true);
+        document.getElementById("cardColumns").appendChild(clon);
+      }
     })
+    
   });
   
   /*
