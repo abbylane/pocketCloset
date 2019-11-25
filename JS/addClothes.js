@@ -29,7 +29,7 @@ addClothingItemBtn.onclick = function(){
     notes: notesTextArea.value
   }, { merge: true });
 }
-;
+
 function showContent(type){
   var user = firebase.auth().currentUser;
   console.log(user);
@@ -44,12 +44,16 @@ function showContent(type){
       if(doc.data().type=='jeans' && type =='pants'){
         var temp = document.getElementsByTagName("template")[0];
         var clon = temp.content.cloneNode(true);
+        clon.getElementById("clotheName").textContent = doc.data().name;
+        clon.getElementById("pic").src = "images/blackPants.png";
         document.getElementById("cardColumns").appendChild(clon);
+
       }
 
       if((doc.data().type=='longsleeve' || doc.data().type=='t-shirt' || doc.data().type=='sweatshirt' || doc.data().type=='dress') && type =='shirts'){
         var temp = document.getElementsByTagName("template")[0];
         var clon = temp.content.cloneNode(true);
+        clon.getElementById("pic").src = "images/blackPants.png";
         document.getElementById("cardColumns").appendChild(clon);
       }
 
@@ -57,6 +61,7 @@ function showContent(type){
         var temp = document.getElementsByTagName("template")[0];
         var clon = temp.content.cloneNode(true);
         document.getElementById("cardColumns").appendChild(clon);
+        clon.getElementById("pic").src = "images/blackShoes.jpeg";
       }
     })
     
