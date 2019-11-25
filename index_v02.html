@@ -155,7 +155,7 @@
                                         <label for="newOutfitName">
                                             <h6>Name</h6>
                                         </label>
-                                        <input type="name" class="form-control" id="newClothingName"
+                                        <input type="name" class="form-control" id="clothingNameInput"
                                             placeholder="Item Name">
                                     </div>
 
@@ -206,7 +206,7 @@
 
                                 <h6>Upload Photo</h6>
                                 <div class="form-group">
-                                    <input type="file" class="form-control-file" id="addClothesUploadPhoto"
+                                    <input type="file" accept="image/*" class="form-control-file" id="clothingPhotoInput"
                                         aria-describedby="fileHelp">
                                 </div>
 
@@ -229,7 +229,7 @@
                     <h3>My Closet</h3>
                 </div>
                 <br>
-                <div class="card-columns mr-2 ml-2 mb-2">
+                <div class="card-columns mr-2 ml-2 mb-2" id="myClosetColumn">
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                         <div class="card-header">
                             Black Pants
@@ -268,12 +268,11 @@
                         </div>
                     </div>
 
-                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                    <!-- <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                         <div class="card-header">Blue Shirt</div>
                         <div class="card-body">
                             <img class="card-img" src="images/blueTshirt.png" alt="Card image">
                         </div>
-
                     </div>
 
                     <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
@@ -296,7 +295,7 @@
                             <img class="card-img" src="#" alt="Card image">
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Add clothing item to an outfit -->
@@ -522,10 +521,11 @@
     <script src="JS/firebase.js"></script>
 
     <!-- My Scripts -->
-    <script src="app.js"></script>
+    <!--<script src="app.js"></script>-->
     <script src="JS/addClothes.js"></script>
     <script src="JS/logout.js"></script>
     <script src="JS/editAccount.js"></script>
+    <script src="JS/displayClothes.js"></script>
 </body>
 
 
