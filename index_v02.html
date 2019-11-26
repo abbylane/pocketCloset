@@ -117,13 +117,13 @@
                 <br>
                 <nav class="nav flex-column">
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="showContent('pants')">Pants</button>
+                        onclick="filter('pants')">Pants</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="showContent('shirts')">Shirts</button>
+                        onclick="filter('shirts')">Shirts</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="showContent('shoes')">Shoes</button>
+                        onclick="filter('shoes')">Shoes</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
-                        onclick="showContent('accessories')">Accessories</button>
+                        onclick="filter('accessories')">Accessories</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
                         onclick="window.location.href = '#outfits'">Outfits</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block" id="logout-link"
@@ -192,17 +192,6 @@
                                         <textarea class="form-control" id="notesTextArea" rows="3"></textarea>
                                     </div>
                                 </form>
-                                <!-- TODO: temporary - change functionality so image changes -->
-                                <!-- <div class="p-3" align="center" id="addClothesImage">
-                                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
-                                        <div class="card-header">
-                                            Blue tShirt
-                                        </div>
-                                        <div class="card-body">
-                                            <img class="card-img" src="images/blueTshirt.png" alt="Card image">
-                                        </div>
-                                    </div>
-                                </div> -->
 
                                 <h6>Upload Photo</h6>
                                 <div class="form-group">
@@ -308,34 +297,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Blue Shirt</div>
-                        <div class="card-body">
-                            <img class="card-img" src="images/blueTshirt.png" alt="Card image">
-                        </div>
-                    </div>
-
-                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Temp Card</div>
-                        <div class="card-body">
-                            <img class="card-img" src="#" alt="Card image">
-                        </div>
-
-                    </div>
-                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Temp Card</div>
-                        <div class="card-body">
-                            <img class="card-img" src="#" alt="Card image">
-                        </div>
-
-                    </div>
-                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Temp Card</div>
-                        <div class="card-body">
-                            <img class="card-img" src="#" alt="Card image">
-                        </div>
-
-                    </div> -->
                 </div>
 
                 <!-- Add clothing item to an outfit -->
