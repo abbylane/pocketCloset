@@ -63,7 +63,7 @@ function renderClothingItem(doc){
     <div align="right" class="p-2">
     <div class="btn-group" role="group">
         <!-- Add to outfit  -->
-        <button data-parameter="${name}-addToOutfit type="button" class="btn btn-outline-secondary" data-toggle="modal"
+        <button data-name="${name}" data-parameter="${name}-addToOutfit" type="button" class="btn btn-outline-secondary" data-toggle="modal"
             data-target="#addClothingModal">+</button>
         <div class="btn-group" role="group">
             <button id="btnGroupDrop2" type="button"
@@ -74,13 +74,13 @@ function renderClothingItem(doc){
                 style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
 
                 <!-- Edit clothing item -->
-                <button data-parameter="${name}-editItem type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                <button data-parameter="${name}-editItem" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
                     data-target="#editClothingItemModal">
                     Edit
                 </button>
 
-                <!-- Delte Clothing Item  -->
-                <button data-parameter="${name}-deleteItem type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                <!-- Delete Clothing Item  -->
+                <button data-parameter="${name}-deleteItem" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
                     data-target="#deleteClothingModal">
                     Delete
                 </button>
@@ -92,6 +92,8 @@ function renderClothingItem(doc){
     
 
   </div>`;
+
+  console.log("added " + name + " to HTML");
 }
 
 function getCategory(type){

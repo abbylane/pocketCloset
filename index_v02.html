@@ -57,11 +57,12 @@
 
 
                             Change Password
-                            <input type="text" name="newPassword" placeholder="Enter New Password Here" id="new-password">
+                            <input type="text" name="newPassword" placeholder="Enter New Password Here"
+                                id="new-password">
                             <br><br>
 
                             Current Password
-                            <input type="text" name="currentPassword" id="current-password"> 
+                            <input type="text" name="currentPassword" id="current-password">
                             <br><br>
 
                             <button type="button" class="btn btn-danger" data-toggle="modal"
@@ -195,8 +196,8 @@
 
                                 <h6>Upload Photo</h6>
                                 <div class="form-group">
-                                    <input type="file" accept="image/*" class="form-control-file" id="clothingPhotoInput"
-                                        aria-describedby="fileHelp">
+                                    <input type="file" accept="image/*" class="form-control-file"
+                                        id="clothingPhotoInput" aria-describedby="fileHelp">
                                 </div>
 
 
@@ -231,8 +232,7 @@
                                 <button id="btnGroupDrop2" type="button"
                                     class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2"
-                                    x-placement="bottom-start"
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2" x-placement="bottom-start"
                                     style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
 
                                     <!-- Edit clothing item -->
@@ -259,7 +259,7 @@
                 </div>
                 <br>
                 <div class="card-columns mr-2 ml-2 mb-2" id="myClosetColumn">
-                    <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+                    <!-- <div class="card border-secondary mb-3 mb-3" style="max-width: 20rem;">
                         <div class="card-header">
                             Black Pants
                         </div>
@@ -268,7 +268,7 @@
                         </div>
                         <div align="right" class="p-2">
                             <div class="btn-group" role="group">
-                                <!-- Add to outfit  -->
+                                Add to outfit  
                                 <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
                                     data-target="#addClothingModal">+</button>
                                 <div class="btn-group" role="group">
@@ -279,14 +279,14 @@
                                         x-placement="bottom-start"
                                         style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-                                        <!-- Edit clothing item -->
-                                        <button type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                                         Edit clothing item 
+                                        <button id="editClothingItemBtn" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
                                             data-target="#editClothingItemModal">
                                             Edit
                                         </button>
 
-                                        <!-- Delte Clothing Item  -->
-                                        <button type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                                        <!-- Delte Clothing Item  
+                                        <button id="deleteClothingItemBtn" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
                                             data-target="#deleteClothingModal">
                                             Delete
                                         </button>
@@ -295,11 +295,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
-                <!-- Add clothing item to an outfit -->
+                <!-- Modal: Add clothing item to an outfit -->
                 <div class="modal fade " id="addClothingModal" tabindex="-1" role="dialog"
                     aria-labelledby="addClothingModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -313,11 +313,12 @@
                             <div class="modal-body">
                                 <h6>Add Item to Existing Outfit:</h6>
                                 <form>
-                                    <select class="form-control">
-                                        <option>Outfit 1</option>
-                                        <option>Outfit 2</option>
-                                        <option>Outfit 3</option>
-                                        <option>Outfit 4</option>
+                                    <select id="addOutfitSelect" class="form-control">
+                                        <option> </option>
+                                        <option value="Outfit 1">Outfit 1</option>
+                                        <option value="Outfit 2">Outfit 2</option>
+                                        <option value="Outfit 3">Outfit 3</option>
+                                        <option value="Outfit 4">Outfit 4</option>
                                     </select>
                                 </form>
 
@@ -333,13 +334,13 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Go</button>
+                                <button id="addToOutfitBtn" type="button" class="btn btn-primary">Go</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Edit current clothing item  -->
+                <!-- Modal: Edit current clothing item  -->
                 <div class="modal fade " id="editClothingItemModal" tabindex="-1" role="dialog"
                     aria-labelledby="editClothingItemModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -414,7 +415,7 @@
                     </div>
                 </div>
 
-                <!-- Delete Clothing Item Modal  -->
+                <!-- Modal: Delete Clothing Item Modal  -->
                 <div class="modal fade " id="deleteClothingModal" tabindex="-1" role="dialog"
                     aria-labelledby="deleteClothingModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -445,28 +446,36 @@
                 <div class="p-3 border-bottom border-success" align="center">
                     <h4>Outfits</h4>
                 </div>
+                <form>
+                    <select class="form-control" id="viewOutfitSelect">
+                        <!-- Options added when outfits are created -->
+                    </select>
+                </form>
+                <div>
+
+                </div>
                 <!-- TODO  -->
                 <br>
                 <div class="col p-6">
                     <div class="card border-secondary p-5 mb-4">
                         <div class="card-body">
-                            <img class="card-img" src="images/blueTshirt.png" alt="Card image">
+                            <img id="outfit-image-1" class="card-img" src="images/blueTshirt.png" alt="Card image">
                         </div>
                     </div>
                     <div class="card border-secondary p-5 mb-4">
                         <div class="card-body">
-                            <img class="card-img" src="images/blackPants.png" alt="Card image">
+                            <img id="outfit-image-2" class="card-img" src="images/blackPants.png" alt="Card image">
                         </div>
                     </div>
                     <div class="card border-secondary p-5 mb-4">
                         <div class="card-body">
-                            <img class="card-img" src="images/blackShoes.jpeg" alt="Card image">
+                            <img id="outfit-image-3" class="card-img" src="images/blackShoes.jpeg" alt="Card image">
                         </div>
                     </div>
 
                     <div class="card border-secondary p-5 mb-4">
                         <div class="card-body">
-                            <img class="card-img" src="images/#" alt="Card image">
+                            <img id="outfit-image-4" class="card-img" src="images/#" alt="Card image">
                         </div>
                     </div>
                 </div>
@@ -527,6 +536,7 @@
     <script src="JS/logout.js"></script>
     <script src="JS/editAccount.js"></script>
     <script src="JS/displayClothes.js"></script>
+    <script src="JS/outfit.js"></script>
 </body>
 
 
