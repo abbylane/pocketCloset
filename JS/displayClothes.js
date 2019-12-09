@@ -89,7 +89,6 @@ function renderClothingItem(doc){
         </div>
     </div>
 </div>
-    
 
   </div>`;
 
