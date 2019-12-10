@@ -1,4 +1,6 @@
-const myClosetColumn = document.querySelector('#myClosetColumn');
+var myClosetColumn = document.querySelector('#myClosetColumn');
+const deleteClothingItemBtn = document.querySelector('#deleteClothingItemBtn');
+const noDeleteClothingItemBtn = document.querySelector('#noDeleteClothingItemBtn');
 
 // give each clothing card a unique html ID
 var idCount = 0;
@@ -25,11 +27,30 @@ function loadCloset(user){
       changes.forEach(change => {
         if(change.type == 'added'){
           renderClothingItem(change.doc);
+          console.log(myClosetColumn.querySelector("#this-delete"));
+          console.log((document.querySelector("#this-delete")).onClick);
         }
         else if(change.type == 'removed'){
           //TODO: removed functionality
         }
       }); 
+    });
+
+
+
+  }
+
+}
+
+function deleteClothingItem(name){
+  console.log("test1");
+  deleteClothingItemBtn.onclick = function(){
+    console.log("test2");
+    var user = firebase.auth().currentUser;
+    usersRef.doc(user.uid).collection('closet').doc(name).delete().then(function() {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
     });
   }
 }
@@ -81,7 +102,7 @@ function renderClothingItem(doc){
 
                 <!-- Delete Clothing Item  -->
                 <button data-parameter="${name}-deleteItem" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
-                    data-target="#deleteClothingModal">
+                    data-target="#deleteClothingModal" id="${name}-delete">
                     Delete
                 </button>
 
@@ -94,6 +115,13 @@ function renderClothingItem(doc){
   </div>`;
 
   console.log("added " + name + " to HTML");
+
+  var namez = "#"+name+"-delete";
+  console.log(namez);
+  (document.querySelector(namez)).addEventListener('click', (e) => {
+    console.log("test0");
+    deleteClothingItem(name);
+  });
 }
 
 function getCategory(type){
@@ -113,5 +141,6 @@ function filter(type){
       card.style.display = 'none';
     }
   });
-
 }
+
+
