@@ -18,20 +18,38 @@ auth.onAuthStateChanged(user =>{
   }
 });
 
+
+function deleteClothingItem(obj){
+  var name = obj.getAttribute('data-parameter');
+  console.log("test1");
+  deleteClothingItemBtn.onclick = function(){
+    console.log("test2");
+    var user = firebase.auth().currentUser;
+    usersRef.doc(user.uid).collection('closet').doc(name).delete().then(function() {
+        console.log(name + "Document successfully deleted!");
+        if(document.querySelector("#"+name + "-card") != null){
+          (document.querySelector("#"+name + "-card")).remove();
+        }
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+  }
+}
+
 /* LOAD CLOTHING ITEMS FROM FIREBASE AND DISPLAY ON SCREEN */
 function loadCloset(user){
   if(user){
     usersRef.doc(user.uid).collection('closet').onSnapshot(snapshot =>{
-
       var changes = snapshot.docChanges();
       changes.forEach(change => {
         if(change.type == 'added'){
           renderClothingItem(change.doc);
-          console.log(myClosetColumn.querySelector("#this-delete"));
-          console.log((document.querySelector("#this-delete")).onClick);
         }
         else if(change.type == 'removed'){
-          //TODO: removed functionality
+          if(document.querySelector("#"+change.doc.data().name + "-card") != null){
+            (document.querySelector("#"+change.doc.data().name + "-card")).remove();
+          }
+
         }
       }); 
     });
@@ -40,19 +58,6 @@ function loadCloset(user){
 
   }
 
-}
-
-function deleteClothingItem(name){
-  console.log("test1");
-  deleteClothingItemBtn.onclick = function(){
-    console.log("test2");
-    var user = firebase.auth().currentUser;
-    usersRef.doc(user.uid).collection('closet').doc(name).delete().then(function() {
-        console.log("Document successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
-  }
 }
 
 function renderClothingItem(doc){
@@ -75,7 +80,7 @@ function renderClothingItem(doc){
 
   myClosetColumn.innerHTML +=
   `
-  <div class="${categorty} clothing-item-card card border-secondary mb-3 mb-3" style="max-width: 20rem;">
+  <div class="${categorty} clothing-item-card card border-secondary mb-3 mb-3" style="max-width: 20rem;" id="${name}-card">
     <div class="card-header">${name}</div>
     <div class="card-body">
       <img data-parameter="${name}-image" class="card-img" src="${url}" alt="Card image">
@@ -101,8 +106,8 @@ function renderClothingItem(doc){
                 </button>
 
                 <!-- Delete Clothing Item  -->
-                <button data-parameter="${name}-deleteItem" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
-                    data-target="#deleteClothingModal" id="${name}-delete">
+                <button data-parameter="${name}" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                    data-target="#deleteClothingModal" id="${name}-delete" onclick="deleteClothingItem(this)">
                     Delete
                 </button>
 
@@ -114,13 +119,14 @@ function renderClothingItem(doc){
   </div>`;
 
   console.log("added " + name + " to HTML");
-
+/*
   var namez = "#"+name+"-delete";
   console.log(namez);
   (document.querySelector(namez)).addEventListener('click', (e) => {
     console.log("test0");
     deleteClothingItem(name);
   });
+  */
 }
 
 function getCategory(type){
