@@ -126,6 +126,8 @@
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
                         onclick="filter('accessories')">Accessories</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
+                        onclick="filter('other')">Other</button>
+                    <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block"
                         onclick="window.location.href = '#outfits'">Outfits</button>
                     <button type="button" class="btn rounded btn-outline-primary btn-lg btn-block" id="logout-link"
                         onclick="window.location.href = '#logout'">Logout</button>
@@ -133,7 +135,9 @@
 
                 <!-- Add clothes button and popup menu -->
                 <!-- Button trigger modal -->
-                <br><br>
+                <br>
+                <button type="button" class="btn btn-primary btn-block"
+                        onclick="filterAll()">View All</button>
                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
                     data-target="#addClothesModal">
                     Add Clothes
@@ -165,13 +169,29 @@
                                             <h6>Clothing Type</h6>
                                         </label>
                                         <select class="form-control" id="typeSelect">
+                                            <!-- pants -->
+                                            <option value="pants">Pants</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="leggings">Leggings</option> 
+                                            
+                                            <!-- shirts  -->
                                             <option value="tshirt">T-shirt</option>
                                             <option value="longsleeve">Long Sleeve</option>
                                             <option value="sweatshirt">Sweatshirt</option>
-                                            <option value="jeans">Jeans</option>
+                                            <option value="sweater">Sweater</option>
+                                            <option value="dress">Dress</option>
+
+                                            <!-- shoes  -->
                                             <option value="tennisShoes">Tennis Shoes</option>
                                             <option value="heels">Heels</option>
-                                            <option value="dress">Dress</option>
+
+                                            <!-- accessories  -->
+                                            <option value="baseballHat">Baseball Hat</option>
+                                            <option value="winterHat">Winter Hat</option>
+                                            <option value="gloves">Gloves</option>
+
+                                            <!-- Other -->
+                                            <option value="winterCoat">Winter Coat</option>
                                         </select>
                                     </div>
 
@@ -180,11 +200,14 @@
                                             <h6>Clothing Color</h6>
                                         </label>
                                         <select class="form-control" id="colorSelect">
+                                            <option value="red">Red</option>
+                                            <option value="orange">Orange</option>
+                                            <option value="yellow">Yellow</option>
+                                            <option value="green">Green</option>
                                             <option value="blue">Blue</option>
                                             <option value="white">White</option>
                                             <option value="black">Black</option>
                                             <option value="gray">Gray</option>
-                                            <option value="red">Red</option>
                                         </select>
                                     </div>
 
@@ -204,7 +227,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="addClothingItemBtn">Add Item to Closet</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    id="addClothingItemBtn">Add Item to Closet</button>
                             </div>
                         </div>
                     </div>
@@ -313,7 +337,7 @@
                                 <h6>Add Item to Existing Outfit:</h6>
                                 <form>
                                     <select id="addOutfitSelect" class="form-control">
-                                        <option><i>Select an outfit below...</i></option>
+                                        <option selected="selected" value=""><i>Select an outfit below...</i></option>
                                     </select>
                                 </form>
 
@@ -431,25 +455,26 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
 
             <!-- COLUMN 3 -->
             <div class="col ml-2 mr-2 rounded bg-white border">
                 <div class="p-3 border-bottom border-success" align="center">
                     <h4>Outfits</h4>
                 </div>
-                <form>
-                    <select class="form-control" id="viewOutfitSelect">
-                        <!-- Options added when outfits are created -->
-                        <option><i>Select an outfit below...</i></option>
-                    </select>
-                </form>
-                <div>
 
+
+                <div class="input-group p-2 mt-4">
+                    <select class="form-control p-1" id="viewOutfitSelect">
+                        <!-- Options added when outfits are created -->
+                        <option selected="selected" value=""><i>Select an outfit below...</i></option>
+                    </select>
+                    <span class="input-group-btn p-1">
+                        <button type="button" class="btn btn-primary " id="viewOutfitBtn">Go</button>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    </span>
                 </div>
+
                 <!-- TODO  -->
                 <br>
                 <div class="col p-6">

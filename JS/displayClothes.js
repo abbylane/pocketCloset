@@ -43,6 +43,7 @@ function loadCloset(user){
       var changes = snapshot.docChanges();
       changes.forEach(change => {
         if(change.type == 'added'){
+
           renderClothingItem(change.doc);
         }
         else if(change.type == 'removed'){
@@ -53,11 +54,7 @@ function loadCloset(user){
         }
       }); 
     });
-
-
-
   }
-
 }
 
 function renderClothingItem(doc){
@@ -119,20 +116,25 @@ function renderClothingItem(doc){
   </div>`;
 
   console.log("added " + name + " to HTML");
-/*
-  var namez = "#"+name+"-delete";
-  console.log(namez);
-  (document.querySelector(namez)).addEventListener('click', (e) => {
-    console.log("test0");
-    deleteClothingItem(name);
-  });
-  */
 }
 
+/*
+TODO: implement more clothing categories
+
+Current type options and categories:
+  Pants: pants, jeans, leggings
+  Shirts: tshirt, longsleeve, sweatshirt, sweater, dress
+  Shoes: tennisShoes, heels
+  Accessories: baseballHat, winterHat, gloves
+  Other: winterCoat
+*/
+
 function getCategory(type){
-  if (type == 'longsleeve' || type == 'tshirt' || type == 'sweatshirt' || type == 'dress') return 'shirts';
+  if (type == 'jeans' || type == 'pants' || type == 'leggings') return 'pants';
+  if (type == 'longsleeve' || type == 'tshirt' || type == 'sweatshirt' || type == 'sweater' || type == 'dress') return 'shirts';
   if (type == 'tennisShoes' || type == 'heels') return 'shoes'; 
-  if (type == 'jeans') return 'pants';
+  if (type == 'baseballHat' || type == 'winterHat' || type == 'gloves') return 'accessories'; 
+  if (type == 'winterCoat') return 'other';
   else return 'empty';
 }
 
@@ -145,6 +147,12 @@ function filter(type){
     else{
       card.style.display = 'none';
     }
+  });
+}
+
+function filterAll(){
+  document.querySelectorAll('.clothing-item-card').forEach((card) => {
+      card.style.display = 'inline-block';
   });
 }
 

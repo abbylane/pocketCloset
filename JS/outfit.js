@@ -9,22 +9,25 @@ const image4 = document.querySelector('#outfit-image-4');
 // variables
 // const usersRef = db.collection('users');
 const addToOutfitBtn = document.querySelector('#addToOutfitBtn');
-var existingOutfitSelect = document.querySelector('#addOutfitSelect');
-var viewOutfitSelect = document.querySelector("#viewOutfitSelect"); 
+var existingoutfitselectModal = document.querySelector('#addOutfitSelect');
+var viewOutfitSelect = document.querySelector("#viewOutfitSelect");
 var newOutfitName = '';
 var selectedOutfit = '';
 var button = null;
 var clothingItemName = null;
+var currOutfit = viewOutfitSelect.value;
+var viewOutfitButton = document.querySelector('#viewOutfitBtn');
 
-auth.onAuthStateChanged(user =>{
-  if(user){
-    // User is signed in
-    displayOutfitSelect(user.uid); 
-  }
-  else{
-    // No user is signed in
-    // sit and wait for user to sign in
-  }
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // User is signed in
+        currUID = user.uid;
+        displayOutfitSelect(currUID);
+    }
+    else {
+        // No user is signed in
+        // sit and wait for user to sign in
+    }
 });
 
 // Get specific clothing item on '+' button click 
@@ -43,52 +46,69 @@ $('#addClothingModal').on('show.bs.modal', function (event) {
         console.log("GO clicked");
 
         newOutfitName = document.querySelector('#newOutfitName').value;
-        selectedOutfit = existingOutfitSelect.value;
+        selectedOutfit = existingoutfitselectModal.value;
 
         console.log("adding " + clothingItemName + " to outfit " + newOutfitName);
         console.log("Selected outfit is: " + selectedOutfit);
 
         if (newOutfitName) { // create a new outfit with selected clothing item
-            updateOutfit(clothingItemName, newOutfitName);
+            createOutfit(clothingItemName, newOutfitName);
             viewOutfitSelect.innerHTML += `<option value="${newOutfitName}">${newOutfitName}</option>`
         }
         else if (selectedOutfit) { // add clothing item to existing outfit
-            updateOutfit(clothingItemName, existingOutfitSelect);
+            updateOutfitAdd(clothingItemName, selectedOutfit);
         }
     }
 })
 
 // update the outfit when a clothing item is added/ when new outfit is created
-function updateOutfit(item, outfit) {
-    console.log("In create outfit function");
-    console.log("Item: " + item);
-    console.log("Outfit: " + outfit);
-
-    // Update database
+function createOutfit(item, outfit) {
     db.collection('users').doc(user.uid).collection('outfits').doc(outfit).set({
         name: outfit,
-        item1: item
+        items: [item]
     }, { merge: true });
-    console.log("Created outfit");
 }
 
+// add a clothing item to an outfit
+function updateOutfitAdd(item, outfit) {
+    var currOutfit = db.collection('users').doc(user.uid).collection('outfits').doc(outfit);
 
-// Displays all current outfits in 'select' ***** FIX
+    currOutfit.update({
+        items: firebase.firestore.FieldValue.arrayUnion(item)
+    })
+}
+
+// TODO: remove a clothing item from an outfit
+function updateOutfitRemove(item, outfit) {
+    // washingtonRef.update({
+    //     regions: firebase.firestore.FieldValue.arrayRemove("east_coast")
+    // });
+}
+
+// Displays all current outfits in 'select'
 function displayOutfitSelect(uid) {
-    db.collection("users").doc(uid).collection("outfits").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+    db.collection("users").doc(uid).collection("outfits").get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data().name);
             viewOutfitSelect.innerHTML += `<option value="${doc.data().name}">${doc.data().name}</option>`;
-            existingOutfitSelect.innerHTML += `<option value="${doc.data().name}">${doc.data().name}</option>`;
+            existingoutfitselectModal.innerHTML += `<option value="${doc.data().name}">${doc.data().name}</option>`;
         });
     });
 }
 
-// display selected outfit 
-function displayOutfits(uid){
-    var currOutfit = viewOutfitSelect.value;
-    var closet = db.collection("users").doc(uid).collection("closet");
-}
+ // TODO: display selected outfit 
+// viewOutfitButton.onclick = function displayOutfitCards(currUID) {
+
+//     var closet = db.collection("users").doc(currUID).collection("closet");
+
+//     // loop through all clothing items
+//     closet.get().then(function (querySnapshot) {
+//         querySnapshot.forEach(function (doc) {
+
+//             console.log(doc.id, " => ", doc.data().name);
+
+//         });
+//     });
+// }
 
 
