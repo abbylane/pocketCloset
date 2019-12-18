@@ -387,7 +387,7 @@
                                         <label for="clothingType">
                                             <h6>Clothing Type</h6>
                                         </label>
-                                        <select class="form-control" id="typeSelect">
+                                        <select class="form-control" id="editClothesTypeSelect">
                                             <option value="tshirt">T-shirt</option>
                                             <option value="longsleeve">Long Sleeve</option>
                                             <option value="sweatshirt">Sweatshirt</option>
@@ -402,7 +402,7 @@
                                         <label for="clothingColor">
                                             <h6>Clothing Color</h6>
                                         </label>
-                                        <select class="form-control" id="colorSelect">
+                                        <select class="form-control" id="editClothesColorSelect">
                                             <option value="blue">Blue</option>
                                             <option value="white">White</option>
                                             <option value="black">Black</option>
@@ -415,7 +415,7 @@
                                         <label for="notes">
                                             <h6>Notes</h6>
                                         </label>
-                                        <textarea class="form-control" id="notes" rows="3"></textarea>
+                                        <textarea class="form-control" id="editClothesNotes" rows="3"></textarea>
                                     </div>
                                     <br>
                                 </form>
@@ -478,28 +478,8 @@
 
                 <!-- TODO  -->
                 <br>
-                <div class="col p-6">
-                    <div class="card border-secondary p-5 mb-4">
-                        <div class="card-body">
-                            <img id="outfit-image-1" class="card-img" src="images/blueTshirt.png" alt="Card image">
-                        </div>
-                    </div>
-                    <div class="card border-secondary p-5 mb-4">
-                        <div class="card-body">
-                            <img id="outfit-image-2" class="card-img" src="images/blackPants.png" alt="Card image">
-                        </div>
-                    </div>
-                    <div class="card border-secondary p-5 mb-4">
-                        <div class="card-body">
-                            <img id="outfit-image-3" class="card-img" src="images/blackShoes.jpeg" alt="Card image">
-                        </div>
-                    </div>
-
-                    <div class="card border-secondary p-5 mb-4">
-                        <div class="card-body">
-                            <img id="outfit-image-4" class="card-img" src="images/#" alt="Card image">
-                        </div>
-                    </div>
+                <div id="currentOutfitCards" class="col p-6">
+                    <!-- will be populated upon selected outfit -->
                 </div>
 
                 <!-- Save Outfit Button and Modal -->

@@ -28,8 +28,8 @@ function loadCloset(user){
         if(change.type == 'added'){
 
           renderClothingItem(change.doc);
-          console.log(myClosetColumn.querySelector("#this-delete"));
-          console.log((document.querySelector("#this-delete")).onClick);   // TODO: onclick causing bug  
+          // console.log(myClosetColumn.querySelector("#this-delete"));
+          // console.log((document.querySelector("#this-delete")).onClick);   // TODO: onclick causing bug  
         }
         else if(change.type == 'removed'){
           //TODO: removed functionality
@@ -110,16 +110,16 @@ function renderClothingItem(doc){
 
   </div>`;
 
-  console.log("added " + name + " to HTML");
+  //console.log("added " + name + " to HTML");
 
-  var namez = "#"+name+"-delete";
-  console.log(namez);
+  // var namez = "#"+name+"-delete";
+  // console.log(namez);
 
-  // TODO: returning NULL
-  (document.querySelector(namez)).addEventListener('click', (e) => {
-    console.log("test0");
-    deleteClothingItem(name);
-  });
+  // // TODO: returning NULL
+  // (document.querySelector(namez)).addEventListener('click', (e) => {
+  //   console.log("test0");
+  //   deleteClothingItem(name);
+  // });
 
 }
 
@@ -155,6 +155,7 @@ function filter(type){
   });
 }
 
+// display all cards, no filter
 function filterAll(){
   document.querySelectorAll('.clothing-item-card').forEach((card) => {
       card.style.display = 'inline-block';
