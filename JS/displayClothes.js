@@ -1,7 +1,8 @@
 var myClosetColumn = document.querySelector('#myClosetColumn');
 const deleteClothingItemBtn = document.querySelector('#deleteClothingItemBtn');
 const noDeleteClothingItemBtn = document.querySelector('#noDeleteClothingItemBtn');
-
+const editClothingItemModal = document.querySelector('#editClothingItemModal');
+const editClothingItemBtn = document.querySelector('#editClothingItemBtn');
 // give each clothing card a unique html ID
 var idCount = 0;
 var cardID = "";
@@ -39,34 +40,30 @@ function deleteClothingItem(obj){
 function editClothingItem(obj){
   var name = obj.getAttribute('data-parameter');
   console.log("test1");
+  var user = firebase.auth().currentUser;
+  var clothing = usersRef.doc(user.uid).collection("closet").doc(name).get().then(function (doc) {
+    if (doc.exists) {
+      console.log("doc exists");
+        editClothingItemModal.querySelector("#editItemName").value = doc.data().name;
+        editClothingItemModal.querySelector("#editClothesTypeSelect").value = doc.data().type;
+        editClothingItemModal.querySelector("#editClothesColorSelect").value = doc.data().color;
+        editClothingItemModal.querySelector("#editClothesNotes").value = doc.data().notes;
+    };
+
+  });
+
   editClothingItemBtn.onclick = function(){
-    var clothing = usersRef.doc(user.uid).collection('closet').doc(name);
-    clothing.update({
-      capital: true
-  })
 
-// Set the "capital" field of the city 'DC'
-return washingtonRef.update({
-    capital: true
-})d
-
-    db.collection("users").where("uid", "==", payload.uid)
-  .get()
-  .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          console.log(doc.id, " => ", doc.data());
-          // Build doc ref from doc.id
-          db.collection("users").doc(doc.id).update({foo: "bar"});
-      });
- })
-    usersRef.doc(user.uid).collection('closet').doc(name).get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          console.log(doc.id, " => ", doc.data());
-          // Build doc ref from doc.id
-          db.collection("users").doc(name).update({foo: "bar"});
-      });
+    console.log(editClothingItemModal.querySelector("#editClothesNotes").value);
+    usersRef.doc(user.uid).collection("closet").doc(name).update({
+        color: editClothingItemModal.querySelector("#editClothesColorSelect").value,
+        type: editClothingItemModal.querySelector("#editClothesTypeSelect").value,
+        notes: editClothingItemModal.querySelector("#editClothesNotes").value
+    });
   }
-}
+  console.log(clothing);
+ 
+  }
 
 /* LOAD CLOTHING ITEMS FROM FIREBASE AND DISPLAY ON SCREEN */
 function loadCloset(user){
@@ -130,7 +127,7 @@ function renderClothingItem(doc){
 
                 <!-- Edit clothing item -->
                 <button data-parameter="${name}" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
-                    data-target="#editClothingItemModal" onclick="editClothingItem(this)>
+                    data-target="#editClothingItemModal" id="${name}-delete" onclick="editClothingItem(this)">
                     Edit
                 </button>
 
@@ -188,5 +185,3 @@ function filterAll(){
       card.style.display = 'inline-block';
   });
 }
-
-

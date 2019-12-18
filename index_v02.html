@@ -380,7 +380,7 @@
                                             <h6>Name</h6>
                                         </label>
                                         <input type="name" class="form-control" id="editItemName"
-                                            placeholder="Edit Item Name">
+                                            placeholder="Edit Item Name" disabled>
                                     </div>
 
                                     <div class="form-group">
@@ -388,13 +388,29 @@
                                             <h6>Clothing Type</h6>
                                         </label>
                                         <select class="form-control" id="editClothesTypeSelect">
+                                            <!-- pants -->
+                                            <option value="pants">Pants</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="leggings">Leggings</option> 
+                                            
+                                            <!-- shirts  -->
                                             <option value="tshirt">T-shirt</option>
                                             <option value="longsleeve">Long Sleeve</option>
                                             <option value="sweatshirt">Sweatshirt</option>
-                                            <option value="jeans">Jeans</option>
+                                            <option value="sweater">Sweater</option>
+                                            <option value="dress">Dress</option>
+
+                                            <!-- shoes  -->
                                             <option value="tennisShoes">Tennis Shoes</option>
                                             <option value="heels">Heels</option>
-                                            <option value="dress">Dress</option>
+
+                                            <!-- accessories  -->
+                                            <option value="baseballHat">Baseball Hat</option>
+                                            <option value="winterHat">Winter Hat</option>
+                                            <option value="gloves">Gloves</option>
+
+                                            <!-- Other -->
+                                            <option value="winterCoat">Winter Coat</option>
                                         </select>
                                     </div>
 
@@ -419,16 +435,10 @@
                                     </div>
                                     <br>
                                 </form>
-
-                                <h6>Upload New Photo</h6>
-                                <div class="form-group">
-                                    <input type="file" class="form-control-file" id="editClothesNewPhoto"
-                                        aria-describedby="fileHelp">
-                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Done</button>
+                                <button type="button" id="editClothingItemBtn" class="btn btn-primary" data-dismiss="modal">Done</button>
                             </div>
                         </div>
                     </div>
