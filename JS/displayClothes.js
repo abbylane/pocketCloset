@@ -72,44 +72,67 @@ function loadCloset(user){
       var changes = snapshot.docChanges();
       changes.forEach(change => {
         if(change.type == 'added'){
-
-          renderClothingItem(change.doc);
+          renderClothingItem(change.doc, user.uid);
         }
         else if(change.type == 'removed'){
           if(document.querySelector("#"+change.doc.data().name + "-card") != null){
             (document.querySelector("#"+change.doc.data().name + "-card")).remove();
           }
-
         }
       }); 
     });
   }
 }
 
-function renderClothingItem(doc){
+async function renderClothingItem(doc, uid){
   var name = doc.data().name;
   var url = doc.data().imageUrl;
   var type = doc.data().type;
+  var color = doc.data().color;
   var categorty = getCategory(type);
+
+  var matchingItemsList = ``;
 
   idCount += 1;   // increment card ID
   cardID = "card" + toString(idCount); 
 
+  /* Initialize popovers */
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
 
-  /*
-  data-parameter based on clothing item name: 
-    image: name-image
-    add to outfit button: name-addToOutfit
-    edit clothing item: name-editItem
-    delete clothing item: name-deleteItem
-  */
+  /* close popovers when clicking elsewhere */
+  $('html').on('click', function(e) {
+    if (typeof $(e.target).data('original-title') == 'undefined' &&
+       !$(e.target).parents().is('.popover.in')) {
+      $('[data-original-title]').popover('hide');
+    }
+  });
+
+  /* Get matching items */
+  await usersRef.doc(uid).collection('closet').get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      if(colorsMatch(color, doc.data().color) && categorty != getCategory(doc.data().type)){
+        matchingItemsList += `<li>${doc.data().name}</li>`;
+      }
+    });
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+  });
 
   myClosetColumn.innerHTML +=
   `
   <div class="${categorty} clothing-item-card card border-secondary mb-3 mb-3" style="max-width: 20rem;" id="${name}-card">
     <div class="card-header">${name}</div>
-    <div class="card-body">
-      <img data-parameter="${name}-image" class="card-img" src="${url}" alt="Card image">
+    <div class="card-body tltp">
+      <img class="card-img" src="${url}" alt="Card image">
+      <div class="tooltiptext">
+        <p>Items that pair well:</p>
+        <ul>
+          ${matchingItemsList}
+        </ul>
+      </div>
     </div>
     
     <div align="right" class="p-2">
@@ -140,11 +163,7 @@ function renderClothingItem(doc){
             </div>
         </div>
     </div>
-</div>
-
-  </div>`;
-
-  console.log("added " + name + " to HTML");
+</div>`;
 }
 
 /*
@@ -185,3 +204,20 @@ function filterAll(){
       card.style.display = 'inline-block';
   });
 }
+
+function colorsMatch(color1, color2){
+  var colorPairs = {
+    'red': ['blue', 'gray', 'white', 'black'],
+    'orange': ['green', 'blue', 'white', 'black'],
+    'yellow': ['green', 'blue', 'white', 'black'],
+    'green': ['orange', 'white', 'black'],
+    'blue': ['red', 'yellow', 'gray', 'white', 'black'],
+    'white': ['blue', 'black', 'gray'],
+    'black': ['red', 'orange', 'yellow', 'green', 'blue', 'white', 'gray'],
+    'gray': ['red', 'blue'],
+  }
+
+  if(colorPairs[color1].indexOf(color2) >=0) return true;
+  return false;
+}
+
