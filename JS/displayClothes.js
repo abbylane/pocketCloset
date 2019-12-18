@@ -36,6 +36,38 @@ function deleteClothingItem(obj){
   }
 }
 
+function editClothingItem(obj){
+  var name = obj.getAttribute('data-parameter');
+  console.log("test1");
+  editClothingItemBtn.onclick = function(){
+    var clothing = usersRef.doc(user.uid).collection('closet').doc(name);
+    clothing.update({
+      capital: true
+  })
+
+// Set the "capital" field of the city 'DC'
+return washingtonRef.update({
+    capital: true
+})d
+
+    db.collection("users").where("uid", "==", payload.uid)
+  .get()
+  .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          console.log(doc.id, " => ", doc.data());
+          // Build doc ref from doc.id
+          db.collection("users").doc(doc.id).update({foo: "bar"});
+      });
+ })
+    usersRef.doc(user.uid).collection('closet').doc(name).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          console.log(doc.id, " => ", doc.data());
+          // Build doc ref from doc.id
+          db.collection("users").doc(name).update({foo: "bar"});
+      });
+  }
+}
+
 /* LOAD CLOTHING ITEMS FROM FIREBASE AND DISPLAY ON SCREEN */
 function loadCloset(user){
   if(user){
@@ -97,8 +129,8 @@ function renderClothingItem(doc){
                 style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
 
                 <!-- Edit clothing item -->
-                <button data-parameter="${name}-editItem" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
-                    data-target="#editClothingItemModal">
+                <button data-parameter="${name}" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                    data-target="#editClothingItemModal" onclick="editClothingItem(this)>
                     Edit
                 </button>
 
