@@ -1,7 +1,8 @@
 var myClosetColumn = document.querySelector('#myClosetColumn');
 const deleteClothingItemBtn = document.querySelector('#deleteClothingItemBtn');
 const noDeleteClothingItemBtn = document.querySelector('#noDeleteClothingItemBtn');
-
+const editClothingItemModal = document.querySelector('#editClothingItemModal');
+const editClothingItemBtn = document.querySelector('#editClothingItemBtn');
 // give each clothing card a unique html ID
 var idCount = 0;
 var cardID = "";
@@ -35,6 +36,34 @@ function deleteClothingItem(obj){
     });
   }
 }
+
+function editClothingItem(obj){
+  var name = obj.getAttribute('data-parameter');
+  console.log("test1");
+  var user = firebase.auth().currentUser;
+  var clothing = usersRef.doc(user.uid).collection("closet").doc(name).get().then(function (doc) {
+    if (doc.exists) {
+      console.log("doc exists");
+        editClothingItemModal.querySelector("#editItemName").value = doc.data().name;
+        editClothingItemModal.querySelector("#editClothesTypeSelect").value = doc.data().type;
+        editClothingItemModal.querySelector("#editClothesColorSelect").value = doc.data().color;
+        editClothingItemModal.querySelector("#editClothesNotes").value = doc.data().notes;
+    };
+
+  });
+
+  editClothingItemBtn.onclick = function(){
+
+    console.log(editClothingItemModal.querySelector("#editClothesNotes").value);
+    usersRef.doc(user.uid).collection("closet").doc(name).update({
+        color: editClothingItemModal.querySelector("#editClothesColorSelect").value,
+        type: editClothingItemModal.querySelector("#editClothesTypeSelect").value,
+        notes: editClothingItemModal.querySelector("#editClothesNotes").value
+    });
+  }
+  console.log(clothing);
+ 
+  }
 
 /* LOAD CLOTHING ITEMS FROM FIREBASE AND DISPLAY ON SCREEN */
 function loadCloset(user){
@@ -120,8 +149,8 @@ async function renderClothingItem(doc, uid){
                 style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
 
                 <!-- Edit clothing item -->
-                <button data-parameter="${name}-editItem" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
-                    data-target="#editClothingItemModal">
+                <button data-parameter="${name}" type="button" class="btn btn-sml mr-2 ml-2 mb-2" data-toggle="modal"
+                    data-target="#editClothingItemModal" id="${name}-delete" onclick="editClothingItem(this)">
                     Edit
                 </button>
 
@@ -191,5 +220,4 @@ function colorsMatch(color1, color2){
   if(colorPairs[color1].indexOf(color2) >=0) return true;
   return false;
 }
-
 
