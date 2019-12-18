@@ -150,6 +150,7 @@ function filter(type){
   });
 }
 
+// display all cards, no filter
 function filterAll(){
   document.querySelectorAll('.clothing-item-card').forEach((card) => {
       card.style.display = 'inline-block';
