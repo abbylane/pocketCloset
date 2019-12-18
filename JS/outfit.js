@@ -15,7 +15,6 @@ var newOutfitName = '';
 var selectedOutfit = '';
 var button = null;
 var clothingItemName = null;
-var currOutfit = viewOutfitSelect.value;
 var viewOutfitButton = document.querySelector('#viewOutfitBtn');
 
 auth.onAuthStateChanged(user => {
@@ -96,19 +95,67 @@ function displayOutfitSelect(uid) {
     });
 }
 
- // TODO: display selected outfit 
-// viewOutfitButton.onclick = function displayOutfitCards(currUID) {
+// TODO: display selected outfit 
+viewOutfitButton.onclick = function displayOutfitCards() {
 
-//     var closet = db.collection("users").doc(currUID).collection("closet");
+    var id = firebase.auth().currentUser.uid;
+    var outfit = viewOutfitSelect.value;
+    var outfitArray = '';
 
-//     // loop through all clothing items
-//     closet.get().then(function (querySnapshot) {
-//         querySnapshot.forEach(function (doc) {
+    var closet = db.collection("users").doc(id).collection("closet");
+    var outfits = db.collection("users").doc(id).collection("outfits");
 
-//             console.log(doc.id, " => ", doc.data().name);
+    // get outfit database item
+    var outfitDocRef = outfits.doc(outfit);
 
-//         });
-//     });
-// }
+    outfitDocRef.get().then(function (doc) {
+        if (doc.exists) {
+            outfitArray = doc.data().items;
+            console.log(outfitArray);
+
+            for (var i = 0; i < outfitArray.length; i++) {
+                console.log(outfitArray[i]);
+                createItemCard(closet, outfitArray[i]);
+            }
+
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
+    });
+}
+
+function createItemCard(closet, item) {
+    // TODO: display items from outfit array
+    var currentOutfitCards = document.querySelector('#currentOutfitCards');
+    currentOutfitCards.innerHTML = '';
+
+    var clothingRef = closet.doc(item);
+    var name = '';
+    var src = '';
+
+    clothingRef.get().then(function (doc) {
+        if (doc.exists) {
+
+            name = doc.data().name;
+            src = doc.data().imageUrl; 
+
+            currentOutfitCards.innerHTML +=                     
+            `<div class="card border-secondary p-5 mb-4">
+                <div class="card-body">
+                    <img id="${name}-outfitCard" class="card-img" src="${src}" alt="Card image">
+                </div>
+            </div>`
+        ;
+
+        } else {
+            console.log("no such document");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
+    });
+}
 
 
