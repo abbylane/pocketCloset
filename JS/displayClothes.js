@@ -91,29 +91,21 @@ async function renderClothingItem(doc, uid){
   var color = doc.data().color;
   var categorty = getCategory(type);
 
-  var matchingItemsList = ``;
+  var matchingItemsList = `<li>Nothing in your closet matches this item</li>`;
+  var first = true;
 
   idCount += 1;   // increment card ID
   cardID = "card" + toString(idCount); 
-
-  /* Initialize popovers */
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  })
-
-  /* close popovers when clicking elsewhere */
-  $('html').on('click', function(e) {
-    if (typeof $(e.target).data('original-title') == 'undefined' &&
-       !$(e.target).parents().is('.popover.in')) {
-      $('[data-original-title]').popover('hide');
-    }
-  });
 
   /* Get matching items */
   await usersRef.doc(uid).collection('closet').get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
       if(colorsMatch(color, doc.data().color) && categorty != getCategory(doc.data().type)){
+        if(first){
+          matchingItemsList = ``;
+        }
         matchingItemsList += `<li>${doc.data().name}</li>`;
+        first = false;
       }
     });
   })
@@ -128,7 +120,7 @@ async function renderClothingItem(doc, uid){
     <div class="card-body tltp">
       <img class="card-img" src="${url}" alt="Card image">
       <div class="tooltiptext">
-        <p>Items that pair well:</p>
+        <h6>Matches:</h6>
         <ul>
           ${matchingItemsList}
         </ul>
